@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            position: absolute;
+            z-index: 1;
+            top: 10px;
+            left: 1rem;
+        }
+
+        .header h4 {
+            font-size: 20px;
+            color: #2c6d02;
+            font-weight: 600;
+        }
+
+        .yo {
+            padding-left: 1rem;
+            position: absolute;
+            top: 80px;
+            z-index: 1;
+        }
+
+        .yo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 1.65rem;
+            border-radius: 50%;
+            box-shadow: 2px 3px 5px #888888;
+        }
+
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 50%;
+            position: relative;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        .map-responsive iframe {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            height: 98%;
+            width: 90%;
+            position: absolute;
+            border-radius: 15px;
+        }
+
+        .tile {
+            margin: 1rem;
+            padding: 1rem;
+            font-size: 2rem;
+            border: 2px solid #7b808b;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        #memberLoggedIN img {
+            width: 125px;
+            height: 125px;
+            display: inline-block;
+        }
+
+        .small-tile .tile {
+            margin-top: 0;
+            margin-right: .25rem;
+            padding: 2rem;
+            font-size: 1.6rem;
+        }
+
+        .fa-user-edit,
+        .fa-handshake {
+            font-size: 4rem;
+        }
+
+        /*#memberLoggedIn {
+            display: none;
+        }
+
+        #joinCommunity {
+            display: none;
+        }*/
+
+        .tile #main-head {
+            font-size: 27px;
+            line-height: normal;
+        }
+
+        .tile p {
+            font-size: small;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function initMap() {
+            var locationRio = {
+                lat: -22.915,
+                lng: -43.197
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: locationRio,
+                gestureHandling: 'none',
+                zoomControl: false
+            });
+        };
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (localStorage.email) {
+                $("#joinCommunity").css("display", "none");
+                $("#memberLoggedIN").css("display", "block");
+                var name = localStorage.email; // JSON points to username
+                name = name.split("@");
+                name = name[0];
+                $("#username").text('' + name);
+                console.log("User IN");
+            } else {
+                $("#joinCommunity").css("display", "block");
+                $("#memberLoggedIN").css("display", "none");
+                console.log("User Not Present");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#logout').click(function () {
+                localStorage.removeItem('email');
+                console.log("Deleted");
+                location.reload();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div style="height: 150px; overflow: hidden;">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 160px; width: 100%;">
+            <path d="M0.00,92.27 C216.83,192.92 304.30,8.39 500.00,109.03 L500.00,0.00 L0.00,0.00 Z"
+                style="stroke: none;fill: #6BF178;"></path>
+        </svg>
+    </div>
+    <div class="header">
+        <h4>Hey, <span id="username">Guest</span> <br>Check out your surroundings</h4>
+
+    </div>
+    <div class="yo">
+        <a href="home.html"><img
+                src="https://www.bing.com/th?id=OIP.WnK1vJs2BjGqyaFWdwdwiwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2"></a>
+        <a href="help.html"><img src="./images/donate_icon.png"></a>
+        <a href="community_page.html"><img src="https://www.bing.com/th?id=OIP.pWxd7XJ_4qyF7ZASphzLAgHaD4&w=345&h=181&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"></a>
+        <a href="announcements.html"><img src="./images/facts_icon.png"></a>
+        <a href="start_login.html"><img src="https://th.bing.com/th/id/OIP.GY9qehbpZHmgdrMGPCvB9QHaHa?w=210&h=210&c=7&r=0&o=5&dpr=1.3&pid=1.7"></a>
+    </div>
+
+    <a href="register.html">
+        <div id="joinCommunity" class="container-fluid">
+            <div class="tile">
+                <img src="./images/4.png">
+                <p id="main-head">click here to<br> resgister</p>
+                <p>Be a part of the solution not the pollution. Join the local community and fight against pollution.
+                </p>
+            </div>
+        </div>
+    </a>
+
+    <div id="memberLoggedIN" class="container-fluid">
+        <div class="tile" style="padding: 2rem;">
+            <div class="is-parent" style="display: inline-block; margin-right: 2rem; text-align: center;">
+                <img src="./images/Avtar1.png">
+            </div>
+            <div class="is-parent" style="display: inline-block;">
+                <h4><i class="far fa-gem" style="margin-right: 1rem;"></i>99</h4>
+                <h4><i class="fas fa-rss" style="margin-right: 1.2rem;"></i>15</h4>
+                <h4><i class="fas fa-smile-beam" style="margin-right: 1rem;"></i>25</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid small-tile">
+        <a href="post_page.html">
+            <div class="tile" style="display: inline-block;">
+                <i class="fas fa-user-edit"></i><br>
+                <span>Post</span>
+            </div>
+        </a>
+        <a href="meet.html">
+            <div class="tile" style="display: inline-block;">
+                <i class="fas fa-handshake"></i><br>
+                <span>Meet-Up</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="container-fluid">
+        <div class="map-responsive">
+            <iframe
+                src="https://www.google.com/maps/embed/v1/place?q=nizampura%2C%20vadodara&key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc"
+                width="600" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+
+</html>

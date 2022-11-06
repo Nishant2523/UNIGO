@@ -1,0 +1,272 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Announcements - <username></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            position: absolute;
+            z-index: 1;
+            top: 40px;
+            left: 1rem;
+        }
+        
+        .header h4 {
+            font-size: 20px;
+            color: #2c6d02;
+            font-weight: 600;
+        }
+        
+        .container {
+            margin: 1rem;
+        }
+        
+        .container h4 {
+            font-size: 20px;
+        }
+        
+        header {
+            position: relative;
+            height: 220px;
+            background-image: linear-gradient(#6BF178, #6BF178);
+            border-bottom-left-radius: 50% 20%;
+            border-bottom-right-radius: 50% 20%;
+        }
+
+        header h4 {
+            padding: 1rem 0;
+        }
+        
+        header span {
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            color: #2c6d02;
+        }
+        
+        .fa-chevron-left {
+            margin-right: 4px;
+        }
+
+        .tile {
+            border: 1px solid;
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .tile hr {
+            margin: .5rem 0; 
+            padding: 0;
+            background-color: black;
+        }
+
+        .back {
+            position: fixed;
+            color: #2c6d02;
+            font-weight: 600;
+            display: block;
+            padding: 1rem;
+            width: 100%;
+            height: 60px;
+            background-image: linear-gradient(#6BF178, #6BF178);
+            border-bottom-left-radius: 50% 20%;
+            border-bottom-right-radius: 50% 20%;
+            z-index: 2;
+        }
+
+        #posts {
+            position: absolute;
+            top: 350px;
+        }
+
+        <!-- Image Slider --> 
+
+        .mySlides {  
+            display: none;
+        }
+
+        .mySlides img {
+            width: 100%;
+        }
+
+        img {vertical-align: middle;}
+
+        /* Slideshow container */
+        .slideshow-container {
+          max-width: 1000px;
+          position: relative;
+          margin: 2rem;
+          background-color: white;
+          top: -130px;
+          border-radius: 15px;
+          padding: 1rem;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+          height: 10px;
+          width: 10px;
+          margin: 0 2px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;
+          transition: background-color 0.6s ease;
+        }
+
+        .active {
+          background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+          -webkit-animation-name: fade;
+          -webkit-animation-duration: 1.5s;
+          animation-name: fade;
+          animation-duration: 2s;
+        }
+
+        @-webkit-keyframes fade {
+          from {opacity: .4} 
+          to {opacity: 1}
+        }
+
+        @keyframes fade {
+          from {opacity: .4} 
+          to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+          .text {font-size: 11px}
+        }
+
+        .btn {
+            margin-top: .5rem;
+            text-align: center;
+        }
+
+        .timestamp {
+            margin: 1rem 0;
+            vertical-align: middle;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            console.log("Hello");
+            var link = ""/* API Call - DATA IN JSON; */;
+            
+            $.getJSON(link, function (yo) {
+                // YO should be Array of Posts
+                $.each(yo, function (index, value) {
+                    $('#posts').append('<div class="tile"><div id="id" style="display:none;"> ' + value.id + ' </div><span id="title">'+ value.title+ '</span><hr><span id="content">' + value.content + '</span><div class="timestamp"><i class="far fa-clock" style="font-size: 1.5rem"></i><span id="timestamp"> ' + value.timestamp + ' </span></div><div class="btn"><center><a id="True" class="button is-success"><span class="icon is-small"><i class="fas fa-check"></i></span><span>Attending</span></a><a id="False" class="button is-danger"><span>Won\'t be joining</span><span class="icon is-small"><i class="fas fa-times"></i></span></a></center></div></div>');
+                });
+            });
+
+            $('#True').click(function() {
+                var id = $('#id').val();
+                console.log(id);
+                console.log("I'm True")
+            });
+            $('#False').click(function() {
+                console.log("I'm False")
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <a href="home.html"><span class="back" style="margin: 0;"><i class="fas fa-chevron-left" style="margin-right: .4rem"></i>Back</span></a>
+    <header>
+        <div class="header">
+            <h4>Announcements</h4>
+        </div>
+    </header>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="./images/Ann1.png">
+        </div>
+        <div class="mySlides fade">
+          <img src="./images/Ann2.png">
+        </div>
+        <div class="mySlides fade">
+          <img src="./images/Ann3.png">
+        </div>
+        <div style="text-align:center; margin-top: .7rem;">
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+          <span class="dot"></span> 
+        </div>
+    </div>
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 4000); // Change image every 2 seconds
+        }
+    </script>
+
+    <div id="posts" class="container">
+        <div class="tile">
+            <span id="title">Title of the announcement </span>
+            <hr>
+            <span id="content"> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</span>
+            <div class="timestamp">
+                <i class="far fa-clock" style="font-size: 1.5rem"></i>
+                <span id="timestamp"></span>
+            </div>
+            <div class="btn">
+                <center>
+                <a id="True" class="button is-success">
+                    <span class="icon is-small">
+                        <i class="fas fa-check"></i>
+                    </span>
+                    <span>Attending</span>
+                </a>
+                <a id="False" class="button is-danger">
+                    <span>Won't be joining</span>
+                    <span class="icon is-small">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </a>
+                </center>
+            </div>
+        </div>
+        <div class="tile">
+            <span id="title"> Title of the announcement </span>
+            <hr>
+            <span id="content"> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</span>
+        </div>
+        <div class="tile">
+            <span id="title"> Title of the announcement </span>
+            <hr>
+            <span id="content"> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</span>
+        </div>
+    </div>
+
+</body>
+
+</html>

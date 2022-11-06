@@ -1,0 +1,205 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            position: absolute;
+            z-index: 1;
+            top: 40px;
+            left: 1rem;
+        }
+
+        .header h4 {
+            font-size: 20px;
+            color: #2c6d02;
+            font-weight: 600;
+        }
+
+        .container {
+            margin: 1rem;
+        }
+
+        .container h4 {
+            font-size: 20px;
+        }
+
+        header {
+            position: relative;
+            height: 220px;
+            background-image: linear-gradient(#6BF178, #6BF178);
+            border-bottom-left-radius: 50% 20%;
+            border-bottom-right-radius: 50% 20%;
+        }
+
+        header h4 {
+            padding: 1rem 0;
+        }
+
+        header span {
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            color: #2c6d02;
+        }
+
+        .back {
+            position: fixed;
+            color: #2c6d02;
+            font-weight: 600;
+            display: block;
+            padding: 1rem;
+            width: 100%;
+            height: 60px;
+            background-image: linear-gradient(#6BF178, #6BF178);
+            border-bottom-left-radius: 50% 20%;
+            border-bottom-right-radius: 50% 20%;
+            z-index: 2;
+        }
+
+        .box {
+            box-shadow:
+                0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+                0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                0 12.5px 10px rgba(0, 0, 0, 0.06),
+                0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                0 100px 80px rgba(0, 0, 0, 0.12);
+            height: 45%;
+            width: 60%;
+            margin-left: 20%;
+            top: 160px;
+            background: white;
+            border-radius: 20px;
+            z-index: 111;
+            position: absolute;
+        }
+
+        header span {
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            color: white;
+        }
+
+        .fa-chevron-left {
+            margin-right: 4px;
+        }
+
+        .para {
+            margin-top: 240px;
+            padding: 1rem;
+        }
+
+        .para p {
+            font-family: 'Acme', ;
+            font-size: 15px;
+            font-weight: bold;
+            color: black;
+        }
+
+        img {
+            border-radius: 50%;
+        }
+
+        .btn {
+
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-left: 1rem;
+            transition-duration: 0.4s;
+        }
+
+        .btn1 {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .btn1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .amt {
+            margin-top: 2px;
+            margin-left: 1rem;
+        }
+
+
+        .pay {
+            margin-top: 5%;
+            margin-left: 120px;
+        }
+
+        
+    </style>
+
+    <script>
+        var curr = 0, tot = 0;
+        function calc(number) {
+
+            //console.log(number);
+            //  var y =document.getElementById('b2').value;
+            //  var z =document.getElementById('b3').value;
+            //  var w =document.getElementById('b4').value;
+
+            document.getElementById('amount').value = number;
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <a href="home.html"><span class="back" style="margin: 0;"><i class="fas fa-chevron-left"
+                style="margin-right: .4rem"></i>Back</span></a>
+    <header>
+        <div class="header">
+            <h4>Donate Us </h4>
+        </div>
+    </header>
+    <div class="box">
+        <div class="image"><img src="./images/donate_trees.jpg" alt="donate"></div>
+    </div>
+    <div class="para">
+        <p>Be like a tree. Stay grounded. Connect with your roots.
+            Turn over a new leaf. Bend before you break. Enjoy your unique natural beauty. Keep growing.</p>
+    </div>
+    <div class="buttons">
+        <button class="btn btn1" onclick="calc(10)" id="b1">&#x20b9 10</button>
+        <button class="btn btn1" onclick="calc(20)" id="b2">&#x20b9 20</button>
+        <button class="btn btn1" onclick="calc(50)" id="b3">&#x20b9 50</button>
+        <button class="btn btn1" onclick="calc(100)" id="b4">&#x20b9 100</button>
+    </div>
+    <div class="amt">
+        <p style="font-weight: bold;">Total Amount : &#x20b9<input type="number" id="amount"></p>
+    </div>
+    <div class="pay">
+        <button class="btn">Pay Amount</button>
+    </div>
+
+
+</body>
+
+</html>

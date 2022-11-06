@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            position: absolute;
+            z-index: 1;
+            top: 10px;
+            left: 1rem;
+        }
+        
+        .header h4 {
+            font-size: 20px;
+            color: #2c6d02;
+            font-weight: 600;
+        }
+        
+        .yo {
+            padding-left: 1rem;
+            position: absolute;
+            top: 80px;
+            z-index: 1;
+        }
+        
+        .yo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 1.65rem;
+            border-radius: 50%;
+            box-shadow: 2px 3px 5px #888888;
+        }
+        
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 50%;
+            position: relative;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        
+        .map-responsive iframe {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            height: 98%;
+            width: 90%;
+            position: absolute;
+            border-radius: 15px;
+        }
+        
+        .tile {
+            margin: 1rem;
+            padding: 1rem;
+            font-size: 2rem;
+            border: 2px solid #7b808b;
+            text-align: center;
+            border-radius: 15px;
+        }
+        
+        .tile #main-head {
+            font-size: 27px;
+            line-height: normal;
+        }
+        
+        .tile p {
+            font-size: small;
+        }
+       
+        h1{
+            font-weight: bold;
+            font: 0.8em sans-serif;
+        } 
+       h2{
+        font-weight: bold;
+        font: 0.8em sans-serif;
+        top:2px; 
+       }
+       
+       #post{
+             margin-top: 10px;
+             margin-left: 15px;
+       }
+
+       #tile-upper {
+           text-align: center;
+       }
+       #tile-upper h4{
+            font-size: 20px;
+            line-height: normal;
+       }
+       #info p{
+          text-align: left;
+          font-size: 25px;;
+           margin-left: 2rem;
+       }
+       
+
+    </style>
+
+    <script type="text/javascript">
+        function initMap() {
+            var locationRio = {
+                lat: -22.915,
+                lng: -43.197
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: locationRio,
+                gestureHandling: 'none',
+                zoomControl: false
+            });
+        };
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var link = ""/* API Call - DATA IN JSON; */;
+            $.getJSON(link, function (yo) {
+                var name = ""; // JSON points to username
+                $("#username").text(''+name);
+                var isMember = ""; // is already member?
+                if(isMember == "True") {
+                    $("#joinCommunity").css("display", "none");
+                }
+                // $.each(yo.details, function (index, value) {
+                //     $('#details').append('<span class="sectionHead">'+ value.sectionHeader+ '<br>'+ '</span>' + value.sectionContent + '<br/><br/><br/>');
+                // });
+                // $.each(yo.contactDetails, function (index, value) {
+                //     $('#contact1').append(value.name + ' : ' + value.number + '<br/>');
+                // });
+                // $('#contact1').append('</span>')
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div style="height: 150px; overflow: hidden;">
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 160px; width: 100%;">
+		  <path d="M0.00,92.27 C216.83,192.92 304.30,8.39 500.00,109.03 L500.00,0.00 L0.00,0.00 Z" style="stroke: none;fill: #6BF178;"></path>
+		</svg>
+    </div>
+    <div class="header">
+        <h4>Hey, <span id="username"><-username-></span> <br>Check out your surroundings</h4>
+
+    </div>
+    <div class="yo">
+        <a href="home.html"><img src="https://www.einstroacademy.com/wp-content/uploads/2018/08/flat-faces-icons-circle-6.png"></a>
+        <a href="#"><img src="./images/donate_icon.png"></a>
+        <a href="community_page.html"><img src="./images/community_page_icon.png"></a>
+        <a href="announcements.html"><img src="./images/facts_icon.png"></a>
+    </div>
+
+    <div id="joinCommunity">
+        <div class="tile">
+            <div id="tile-upper">
+                <img src="./images/member_icon.png" alt="Avatar" width="50px" height="50px">
+                <h4>UserName</h4>
+                <p>&#8545 Level</p>
+            </div>
+            <!-- <p id="main-head">Join the<br> Community</p>
+            <p>Be a part of the solution not the pollution. Join the local community and fight against pollution.</p> -->
+
+            <div id="info">
+                <p><i class="far fa-comment-alt"></i></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="map-responsive">
+            <iframe src="https://www.google.com/maps/embed/v1/place?q=nizampura%2C%20vadodara&key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc" width="600" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+</body>
+
+</html>
